@@ -12,10 +12,7 @@
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/magrimes/EmployeeTracker/issues"
   },
-  "homepage": "https://github.com/magrimes/EmployeeTracker#readme",
   "dependencies": {
     "console.table": "^0.10.0",
     "inquirer": "^7.0.3",

@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
     database: "Employee_TrackerDB"
 });
 
-// Initiate MySQL Connection.
+// Initiate MySQL connection
 connection.connect(function (err) {
     if (err) {
         console.error("error connecting: " + err.stack);
