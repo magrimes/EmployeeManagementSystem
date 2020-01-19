@@ -36,8 +36,23 @@ function start() {
                 case "View All Employees":
                     ViewAllEmployees();
                 break;
-                case "View All Employees by Department":
-                    View
+                case "View All Departments":
+                    ViewAllDepartments();
+                break;
+                case "View All Roles":
+                    ViewAllRoles();
+                break;
+                case "Add Employee":
+                    AddEmployee();
+                break;
+                case "Add Department":
+                    AddDepartment();
+                break;
+                case "Add Role":
+                    AddRole();
+                break;
+                case "Update Employee Roles":
+                    UpdateEmployeeRoles();
                 break;
                 case "exit":
                     console.log("exit");
@@ -46,7 +61,7 @@ function start() {
             }
         })
 
-}
+};
 
 function ViewAllEmployees() {
     connection.query("SELECT * FROM employee", function(err, res){
@@ -56,12 +71,50 @@ function ViewAllEmployees() {
     })
 };
 
-function ViewAllEmployeesByDepartment() {
-    connection
-}
+function ViewAllDepartments() {
+    connection.query("SELECT * FROM department", function(err, res){
+        if(err) throw err;
+        console.table(res);
+        start();
+    })
+};
 
+function ViewAllRoles() {
+    connection.query("SELECT * FROM role", function(err, res){
+        if(err) throw err;
+        console.table(res);
+        start();
+    })
+};
 
+function AddEmployee() {
+    connection.query("INSERT INTO", function(err, res){
+        if(err) throw err;
+        console.table(res);
+        start();
+    })
+};
 
+function AddDepartment() {
+    connection.query("INSERT INTO", function(err, res){
+        if(err) throw err;
+        console.table(res);
+        start();
+    })
+};
 
+function AddRole() {
+    connection.query("INSERT INTO", function(err, res){
+        if(err) throw err;
+        console.table(res);
+        start();
+    })
+};
 
-
+function UpdateEmployeeRoles() {
+    connection.query("", function(err, res){
+        if(err) throw err;
+        console.table(res);
+        start();
+    })
+};
