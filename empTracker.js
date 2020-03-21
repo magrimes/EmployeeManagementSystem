@@ -122,3 +122,51 @@ function AddEmployee() {
     })
 }
 
+function AddRole() {
+    connection.query("SELECT * FROM department", function (err, res) {
+        if (err) throw err;
+        res = res.map(function (department) {
+            return {
+                name: department.name,
+                value: department.id
+            }
+        })
+        inquirer.prompt([{
+            name: "title",
+            message: "What is their title?",
+            type: "input"
+        }, {
+            name: "salary",
+            message: "What is their salary?",
+            type: "number"
+        }, {
+            name: "department",
+            message: "What is the role's department?",
+            type: "list",
+            choices: res
+        }]).then(function (answers) {
+            connection.query(`INSERT INTO employee (
+                title, salary, department_id
+            ) VALUES (
+                "${answers.title}", "${answers.salary}", "${answers.department}"
+            )`, function (err, res) {
+                if (err) throw err;
+                start();
+            })
+        })
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
