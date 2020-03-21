@@ -2,7 +2,7 @@
   "name": "employeeTracker",
   "version": "1.0.0",
   "description": "The goal of this assignment is to architect and build a solution for managing a company's employees using node, inquirer, and MySQL. These interfaces are known as Content Management Systems (CMS).",
-  "main": "Employee_Tracker.js",
+  "main": "empTracker.js",
   "dependencies": {
     "console.table": "^0.10.0",
     "inquirer": "^7.1.0",
