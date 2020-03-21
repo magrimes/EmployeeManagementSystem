@@ -157,7 +157,22 @@ function AddRole() {
     })
 }
 
-
+function AddDepartment() {
+    inquirer.prompt([{
+        name: "name",
+        message: "What is the department's name?",
+        type: "input"
+    }]).then(function (answers) {
+        connection.query(`INSERT INTO department (
+                name
+            ) VALUES (
+                "${answers.name}"
+            )`, function (err, res) {
+            if (err) throw err;
+            start();
+        })
+    })
+}
 
 
 
