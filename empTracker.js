@@ -30,91 +30,95 @@ function start() {
 
         })
 
-        .then( function(answer){
+        .then(function (answer) {
             var EMS = answer.EMS
             switch (EMS) {
                 case "View All Employees":
                     ViewAllEmployees();
-                break;
+                    break;
                 case "View All Departments":
                     ViewAllDepartments();
-                break;
+                    break;
                 case "View All Roles":
                     ViewAllRoles();
-                break;
+                    break;
                 case "Add Employee":
                     AddEmployee();
-                break;
+                    break;
                 case "Add Department":
                     AddDepartment();
-                break;
+                    break;
                 case "Add Role":
                     AddRole();
-                break;
+                    break;
                 case "Update Employee Roles":
                     UpdateEmployeeRoles();
-                break;
+                    break;
                 case "exit":
                     console.log("exit");
                     connection.end();
-                break;
+                    break;
             }
         })
 
-};
+}
 
 function ViewAllEmployees() {
-    connection.query("SELECT * FROM employee", function(err, res){
-        if (err) throw err; 
+    connection.query("SELECT * FROM employee", function (err, res) {
+        if (err) throw err;
         console.table(res);
         start();
     })
 };
 
 function ViewAllDepartments() {
-    connection.query("SELECT * FROM department", function(err, res){
-        if(err) throw err;
+    connection.query("SELECT * FROM department", function (err, res) {
+        if (err) throw err;
         console.table(res);
         start();
     })
 };
 
 function ViewAllRoles() {
-    connection.query("SELECT * FROM role", function(err, res){
-        if(err) throw err;
+    connection.query("SELECT * FROM role", function (err, res) {
+        if (err) throw err;
         console.table(res);
         start();
     })
 };
 
 function AddEmployee() {
-    connection.query("INSERT INTO", function(err, res){
-        if(err) throw err;
-        console.table(res);
-        start();
+    connection.query("SELECT * FROM role", function (err, res) {
+        if (err) throw err;
+        res = res.map(function (role) {
+            return {
+                name: role.title,
+                value: role.id
+            }
+        })
+        inquirer.prompt([{
+            name: "firstname",
+            message: "What is their first name?",
+            type: "input"
+        }, {
+            name: "lastname",
+            message: "What is their last name?",
+            type: "input"
+        }, {
+            name: "role",
+            message: "What is their role?",
+            type: "list",
+            choices: res
+        }]).then(function (answers) {
+            connection.query(`INSERT INTO employee (
+                first_name, last_name, role_id
+            ) VALUES (
+                "${answers.firstname}", "${answers.lastname}", "${answers.role}"
+            )`, function (err, res) {
+                if (err) throw err;
+                start();
+            })
+        })
     })
-};
+}
 
-function AddDepartment() {
-    connection.query("INSERT INTO", function(err, res){
-        if(err) throw err;
-        console.table(res);
-        start();
-    })
-};
-
-function AddRole() {
-    connection.query("INSERT INTO", function(err, res){
-        if(err) throw err;
-        console.table(res);
-        start();
-    })
-};
-
-function UpdateEmployeeRoles() {
-    connection.query("", function(err, res){
-        if(err) throw err;
-        console.table(res);
-        start();
-    })
-};
