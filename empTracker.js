@@ -174,6 +174,44 @@ function AddDepartment() {
     })
 }
 
+function UpdateEmployeeRoles() {
+    connection.query("SELECT * FROM employee", function (err, employees) {
+        if (err) throw err;
+        employees = employees.map(function (employee) {
+            return {
+                name: employee.first_name + " " + employee.last_name,
+                value: employee.id
+            }
+        })
+        connection.query("SELECT * FROM role", function (err, roles) {
+            if (err) throw err;
+            roles = roles.map(function (role) {
+                return {
+                    name: role.title,
+                    value: role.id
+                }
+            })
+            inquirer.prompt([{
+                name: "employee",
+                message: "Select an employee to update.",
+                type: "list",
+                choices: employees
+            }, {
+                name: "role",
+                message: "Select the new role.",
+                type: "list",
+                choices: roles
+            }]).then(function (answers) {
+                connection.query(`UPDATE employee SET role_id = ${answers.role} WHERE id = ${answers.employee}`, function (err, res) {
+                    if (err) throw err;
+                    start();
+                })
+            })
+        })
+    }
+    )
+
+}
 
 
 
