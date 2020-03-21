@@ -1,21 +1,25 @@
 {
   "name": "employeeTracker",
   "version": "1.0.0",
-  "description": "",
-  "main": "empTracker.js",
+  "description": "The goal of this assignment is to architect and build a solution for managing a company's employees using node, inquirer, and MySQL. These interfaces are known as Content Management Systems (CMS).",
+  "main": "Employee_Tracker.js",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^7.1.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/magrimes/EmployeeTracker.git"
+    "url": "git+https://github.com/magrimes/EmployeeManagementSystem.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/magrimes/EmployeeManagementSystem/issues"
   },
-  "dependencies": {
-    "console.table": "^0.10.0",
-    "inquirer": "^7.0.3",
-    "mysql": "^2.17.1"
-  }
+  "homepage": "https://github.com/magrimes/EmployeeManagementSystem#readme"
 }

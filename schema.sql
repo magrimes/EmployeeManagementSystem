@@ -1,5 +1,5 @@
 -- to create database
-DROP DATABASE Employee_TrackerDB;
+DROP DATABASE IF EXISTS Employee_TrackerDB;
 
 CREATE DATABASE Employee_TrackerDB;
 
@@ -17,7 +17,7 @@ CREATE TABLE role (
   salary DECIMAL(10),
   department_id INT,  
   PRIMARY KEY (id),
-  FOREIGN KEY (department_id) REFERENCES department(departmentID)
+  FOREIGN KEY (department_id) REFERENCES department(id)
 );
 
 CREATE TABLE employee (
@@ -27,6 +27,5 @@ CREATE TABLE employee (
   role_id INT,
   manager_id INT,
   PRIMARY KEY (id),
-  FOREIGN KEY (role_id) REFERENCES role(roleID),
-  FOREIGN KEY (manager_id) REFERENCES role(managerID)
+  FOREIGN KEY (role_id) REFERENCES role(id)
 );
