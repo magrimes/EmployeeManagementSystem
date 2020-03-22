@@ -145,7 +145,7 @@ function AddRole() {
             type: "list",
             choices: res
         }]).then(function (answers) {
-            connection.query(`INSERT INTO employee (
+            connection.query(`INSERT INTO role (
                 title, salary, department_id
             ) VALUES (
                 "${answers.title}", "${answers.salary}", "${answers.department}"
